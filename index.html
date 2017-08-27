@@ -70,12 +70,12 @@
                     </div>
                   </span>
                   <!-- {{instead of price}} -->
-                    <div class ="res alert alert-danger" ng-repeat="home in homes | orderBy: 'price'  track by $index" >
+                    <div class ="res" ng-repeat="home in homes | orderBy: 'price'  track by $index" >
                       <ol style="text-decoration:none;text-align:left;list-style:none;">
                         <li>
-                          <span style="color:grey">{{date | date:'dd/MM/yyyy'}}
-                            <span style="float:right">{{home.id}}</span>
-                            <h2>{{(home.city).toUpperCase();}} |
+                          <span style="color:salmon;margin-top:5px;">{{date | date:'dd/MM/yyyy'}}
+                            <span style="float:right;padding:10px;">{{home.id}}</span>
+                            <h2 style="font-weight:bold">{{(home.city).toUpperCase();}} |
                                <span class="h2"> {{home.type}}</span>
                                <span class="h4"> from </span>
                                {{home.price}}$ a night!
@@ -118,7 +118,7 @@
   function initMap() {
      var currentLocation = {lat:32.109333, lng:34.855499};
      var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 4,
+            zoom: 10,
             center: currentLocation
         });
         var marker = new google.maps.Marker({
