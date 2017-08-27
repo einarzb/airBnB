@@ -100,10 +100,10 @@ app.controller('homeCtrl',
                console.log("im tlv");
                console.log(currentLocation);
 
-                var marker = new google.maps.Marker({
-                    position: currentLocation,
-                    map: map
-                });
+                // var marker = new google.maps.Marker({
+                //     position: currentLocation,
+                //     map: map
+                // });
         }//end for loop
       }//end initMarker
 
