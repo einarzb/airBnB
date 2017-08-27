@@ -1130,13 +1130,13 @@ app.factory('homesFactory', function(){
       return temp;
   }
 
-  homesFactory.nextTen = function(){
+  homesFactory.nextHomes = function(){
     if (counter < homes.length) {
         counter += 10;
     }
   }
 
-  homesFactory.lastTen = function(){
+  homesFactory.prevHomes = function(){
         if (counter > 0) {
             counter -= 10;
         }

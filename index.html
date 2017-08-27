@@ -60,12 +60,13 @@
                   <span style="display:inline-flex; margin-top:20px">
                     <h2>10 results</h2>
                     <div style="padding-top:20px;margin-left:22px;">
-                      <button type="button" class="btn btn-success btn-sm" ng-click="lastTen()">previous</button>
-                        <button type="button" class="btn btn-success btn-sm" ng-click="nextTen()">next</button>
+                      <button type="button" class="btn btn-success btn-sm" ng-click="prevHomes()">previous</button>
+                        <button type="button" class="btn btn-success btn-sm" ng-click="nextHomes()">next</button>
                         <button type="button" class="btn btn-success btn-sm" ng-click="showMap()">show map</button>
                     </div>
                   </span>
-                    <div class ="res alert alert-danger" ng-repeat="home in homes | orderBy: '-price'  track by $index" >
+                  <!-- {{instead of price}} -->
+                    <div class ="res alert alert-danger" ng-repeat="home in homes | orderBy: 'price'  track by $index" >
                       <ol style="text-decoration:none;text-align:left;list-style:none;">
                         <li>
                           <span style="color:grey">{{date | date:'dd/MM/yyyy'}}

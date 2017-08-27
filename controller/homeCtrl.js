@@ -5,8 +5,16 @@ app.controller('homeCtrl',
 
  function($scope, homesFactory) {
     $scope.homes = homesFactory.getData();
-    $scope.nextTen = homesFactory.nextTen;
-    $scope.lastTen = homesFactory.lastTen;
+
+    $scope.nextHomes = function(){
+        homesFactory.nextHomes();
+        $scope.homes = homesFactory.getData();
+    }
+    $scope.prevHomes = function(){
+        homesFactory.prevHomes();
+        $scope.homes = homesFactory.getData();
+    }
+
   //inputs
     $scope.homeDesc;
     $scope.homePrice;
