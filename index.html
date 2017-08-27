@@ -1,0 +1,126 @@
+
+<html ng-app="airbnbApp">
+<head>
+  <title>AirBnB - by Einar Barzilay</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 main">
+          <div ng-controller="homeCtrl">
+            <header>
+              <h1>AirBnB</h1>
+                <span ng-show="intro" style="display:inline-block;">
+                    <button type="button" class="btn btn-danger btn-sm" ng-click="publishHome()">publish home</button><br><br>
+                      &nbsp;
+                    <button type="button" class="btn btn-success btn-sm" ng-click="findHome()">find home</button><br><br>
+                </span>
+            </header>
+
+            <section class="searchHome" ng-show="searchHome">
+                <input style="width:300px" type="text" class="form-control" name="search" value="" placeholder="search home"> <br>
+                <button type="button" class="btn btn-success" ng-click="searchByPrice()">search by price</button>
+                <button type="button" class="btn btn-success" ng-click="searchByRoom()">search by room number</button>
+                <button type="button" class="btn btn-danger" ng-click="back()">back</button> <br>
+            </section>
+
+            <section class="insertHome">
+              <div ng-show="insertHome">
+                <button type="button" class="btn btn-danger btn-sm" ng-click="back()">back</button>
+                <h4>publish your property</h4>
+                name / location: <input style="width:160px;height:20px;padding:7px;" type="text" ng-model="homeCity" name="" value="" class="form-control" > <br>
+                <input type="radio" ng-model="homeType" name="type" value="Entire Apartment" checked> entire apartment&nbsp;
+                <input type="radio" ng-model="homeType" name="type" value="Private Room"> private room&nbsp;
+                <input type="radio" ng-model="homeType" name="type" value="Shared Room"> shared room <br>
+                <br>
+                <textarea type="text" class="desc" ng-model="homeDesc" placeholder="tell us about your property"></textarea> <br>
+                <input type="checkbox" ng-model="pet" name="" value="pet-friendly" checked> pet friendly <br><br>
+                <span style="display:inline-flex">
+                  rooms: &nbsp;<input style="width:40px;height:20px;padding:7px;"  type="number" ng-model="roomNum" class="form-control" name="">&nbsp;
+                  beds &nbsp;<input style="width:40px;height:20px;padding:7px;"  type="number" ng-model="bedNum" class="form-control" name="">&nbsp;
+                  price per day&nbsp;&nbsp;
+                  <input type="number" style="width:60px;height:20px;padding:7px;" class="form-control" min="0" ng-model="homePrice" name="" value="" placeholder="100$">
+               </span>
+               <br><br>
+                location <span style="display:inline-flex"><input type="number" style="width:60px;height:20px;padding:7px;"  class="form-control" ng-model="homeLat" name="" value="" placeholder="latitude"> &nbsp;
+                            <input type="number" class="form-control" style="width:60px;height:20px;padding:7px;"  ng-model="homeLng" name="" value="" placeholder="longitude">
+                        </span>
+                <br><br>
+                upload image <span style="width:100px">
+              <input type="text" style="width:230px;height:20px;padding:7px;" class="form-control" ng-model="homeImage"></span>
+                  <br>
+                  <input type="hidden" name="id" value="$index" ng-model="homeId">
+              <button type="button" class="btn btn-danger" ng-click="submitHome()">publish</button>
+              <br><br>
+            </section>
+
+            <section class="mapResult">
+                <div ng-show="resultsOnMap">
+                  <span style="display:inline-flex; margin-top:20px">
+                    <h2>10 results</h2>
+                    <div style="padding-top:20px;margin-left:22px;">
+                      <button type="button" class="btn btn-success btn-sm" ng-click="lastTen()">previous</button>
+                        <button type="button" class="btn btn-success btn-sm" ng-click="nextTen()">next</button>
+                        <button type="button" class="btn btn-success btn-sm" ng-click="showMap()">show map</button>
+                    </div>
+                  </span>
+                    <div class ="res alert alert-danger" ng-repeat="home in homes | orderBy: '-price'  track by $index" >
+                      <ol style="text-decoration:none;text-align:left;list-style:none;">
+                        <li>
+                          <span style="color:grey">{{date | date:'dd/MM/yyyy'}}
+                            <span style="float:right">{{home.id}}</span>
+                            <h2>{{(home.city).toUpperCase();}} |
+                               <span class="h2"> {{home.type}}</span>
+                               <span class="h4"> from </span>
+                               {{home.price}}$ a night!
+                             </h2>
+                          </span>
+                            <h4>{{home.description}}</h4>
+                          <!-- location: {{(home.latitude).toFixed(3)}} , {{(home.longitude).toFixed(3)}} <br> -->
+                          rooms:{{home.rooms}} <br> beds: {{home.beds}}<br>
+                          {{home.pet}} <br>
+                          <!-- if true - your pets are welcomed -->
+                          For reservation - contact: <a href="#">{{home.owner}}</a>
+                          <br>
+                          <button style="margin-top:10px" type="button" class="btn btn-danger" ng-click="bookNow()">book now!</button>
+                          <img ng-src="{{home.image}}" alt="" />
+                        </li>
+                      </ol>
+                    </div>
+              </div> <!--result container-->
+            </section>
+            <aside ng-show="map" id="map"></aside>
+          </div>
+      </div>
+      <!-- <div class="users" ng-controller="userCtrl as userObj">
+        <p>users</p>
+            <li>{{userObj.users[0].id}}</li>
+      </div> -->
+  </div>
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcpWspiHk0W3QTfrDYtbx6WDzkzb5OQf4&callback=initMap">
+
+  </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"> </script>
+<script type="text/javascript" src="controller/userCtrl.js"></script>
+<script type="text/javascript" src="controller/homeCtrl.js"></script>
+
+<script type="text/javascript" src="service/homesFactory.js"></script>
+<script type="text/javascript" src="service/usersFactory.js"></script>
+
+<script>
+  function initMap() {
+     var currentLocation = {lat:32.109333, lng:34.855499};
+     var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: currentLocation
+        });
+          var scope = angular.element(document.getElementById('map')).scope();
+          scope.initMarker(map);
+  }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+body{
+  background-color: #000;
+  color:salmon;
+}
+h1, label{
+  color:salmon;
+}
+#map {
+  margin-top: 10px;
+  height: 500px;
+  width: 100%;
+}
+
+.main{
+  margin-top:50px;
+}
+.intro {
+display: inline-flex;
+}
+.form-control {
+width: 100px;
+}
+.desc {
+padding:2px;
+border-radius: 5px;
+border:none;
+width:300px;
+height:120px;
+}
+img{
+display: flex;
+}
+select{
+width:50px;
+}
+img{
+z-index: 9999;
+border-radius: 5px;
+padding: 2px;
+margin-bottom: 4px;
+float: right;
+margin-top: -90px;
+width: 150px;
+height: 150px;
+}
+.res{
+height:350px;
+}
+button {margin-bottom: 5px;}
