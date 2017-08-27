@@ -3,18 +3,22 @@
 <head>
   <title>AirBnB - by Einar Barzilay</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="row">
-        <div class="col-md-6 col-md-offset-3 main">
+        <div class="col-md-8 col-md-offset-3 main">
           <div ng-controller="homeCtrl">
             <header>
               <h1>AirBnB</h1>
                 <span ng-show="intro" style="display:inline-block;">
-                    <button type="button" class="btn btn-danger btn-sm" ng-click="publishHome()">publish home</button><br><br>
-                      &nbsp;
-                    <button type="button" class="btn btn-success btn-sm" ng-click="findHome()">find home</button><br><br>
+                  <button type="button" style="border:none;background-color:transparent;focus:none;outline:none" ng-click="publishHome()">
+                    <i style="font-size:20em;color:#fff" class="fa fa-home" aria-hidden="true"> </i>
+                  </button> <span style="font-size:25em;color:rgba(255,255,255,1);">|</span> &nbsp;
+                    <button type="button" style="border:none;background-color:transparent;margin-top:-185px;outline:none" class="btn btn-success btn-sm" ng-click="findHome()">
+                      <i style="font-size:20em;color:#fff" class="fa fa-search" aria-hidden="true"></i>
+                    </button><br><br>
                 </span>
             </header>
 
