@@ -1,7 +1,7 @@
 app.factory('homesFactory', function(){
 
   var homesFactory = {};
-
+  var filterName = "";
   var homes = [
     {
     id: 1,
@@ -1118,6 +1118,11 @@ app.factory('homesFactory', function(){
 
   homesFactory.getHomes = function(){
       return homes;
+  }
+
+  homesFactory.sortBy = function(filterName){
+    console.log(filterName);
+    return filterName;
   }
 
   var counter = 0;

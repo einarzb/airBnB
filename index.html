@@ -24,8 +24,8 @@
 
             <section class="searchHome" ng-show="searchHome">
                 <input style="width:300px" type="text" class="form-control" name="search" value="" placeholder="search home"> <br>
-                <button type="button" class="btn btn-success" ng-click="searchByPrice()">search by price</button>
-                <button type="button" class="btn btn-success" ng-click="searchByRoom()">search by room number</button>
+                <button type="button" class="btn btn-success" ng-click="sortBy('price')">search by price</button>
+                <button type="button" class="btn btn-success" ng-click="sortBy('rooms')">search by room number</button>
                 <button type="button" class="btn btn-danger" ng-click="back()">back</button> <br>
             </section>
 
@@ -69,8 +69,7 @@
                         <button type="button" class="btn btn-success btn-sm" ng-click="showMap()">show map</button>
                     </div>
                   </span>
-                  <!-- {{instead of price}} -->
-                    <div class ="res" ng-repeat="home in homes | orderBy: 'price'  track by $index" >
+                    <div class ="res" ng-repeat="home in homes | orderBy:filterName track by $index" >
                       <ol style="text-decoration:none;text-align:left;list-style:none;">
                         <li>
                           <span style="color:salmon;margin-top:5px;">{{date | date:'dd/MM/yyyy'}}
@@ -104,16 +103,17 @@
       </div> -->
   </div>
 
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcpWspiHk0W3QTfrDYtbx6WDzkzb5OQf4&callback=initMap">
-
-  </script>
+<!-- google map -->
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcpWspiHk0W3QTfrDYtbx6WDzkzb5OQf4&callback=initMap"></script>
+<!-- angular -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"> </script>
+
 <script type="text/javascript" src="controller/userCtrl.js"></script>
 <script type="text/javascript" src="controller/homeCtrl.js"></script>
-
 <script type="text/javascript" src="service/homesFactory.js"></script>
 <script type="text/javascript" src="service/usersFactory.js"></script>
 
+<!-- for google map -->
 <script>
   function initMap() {
      var currentLocation = {lat:32.109333, lng:34.855499};
@@ -129,7 +129,5 @@
           // scope.initMarker(map);
   }
 </script>
-
-
 </body>
 </html>

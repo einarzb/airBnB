@@ -15,6 +15,11 @@ app.controller('homeCtrl',
         $scope.homes = homesFactory.getData();
     }
 
+    $scope.sortBy = function(val){
+        $scope.filterName = homesFactory.sortBy(val);
+    }
+
+
   //inputs
     $scope.homeDesc;
     $scope.homePrice;
@@ -90,20 +95,19 @@ app.controller('homeCtrl',
       $scope.initMarker = function (map) {
 
          for (var i = 0; i < $scope.homes; i++) {
-              console.log($scope.homes[i].latitude);
 
                var currentLocation = {
                 lat: parseFloat($scope.homes[i].latitude),
                 lng: parseFloat($scope.homes[i].longitude)
                };
 
-               console.log("im tlv");
-               console.log(currentLocation);
+               var markers = [];
+               var marker = new google.maps.Marker({
+                   position: currentLocation,
+                   map: map
+               });
+               markers.push(marker)
 
-                // var marker = new google.maps.Marker({
-                //     position: currentLocation,
-                //     map: map
-                // });
         }//end for loop
       }//end initMarker
 
