@@ -1,4 +1,4 @@
-var app = angular.module('airbnbApp', []);
+var app = angular.module('airbnbApp');
 
 app.controller('userCtrl',
  ['usersFactory',

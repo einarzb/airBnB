@@ -7,6 +7,13 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <div class="row" ng-controller="authCtrl">
+      <div class="container">
+      <button type="button" ng-click="login()">login</button>
+      </div>
+    </div>
+
     <div class="row">
         <div class="col-md-8 col-md-offset-3 main">
           <div ng-controller="homeCtrl">
@@ -102,14 +109,14 @@
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcpWspiHk0W3QTfrDYtbx6WDzkzb5OQf4&callback=initMap"></script>
 <!-- angular -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"> </script>
-
-<script type="text/javascript" src="controller/userCtrl.js"></script>
 <script type="text/javascript" src="controller/homeCtrl.js"></script>
+<script type="text/javascript" src="controller/userCtrl.js"></script>
 <script type="text/javascript" src="controller/authCtrl.js"></script>
 
-<script type="text/javascript" src="service/homesFactory.js"></script>
+
 <script type="text/javascript" src="service/usersFactory.js"></script>
-<script type="text/javascript" src="service/authService.js"></script>
+<script type="text/javascript" src="service/homesFactory.js"></script>
+<script type="text/javascript" src="service/authFactory.js"></script>
 
 
 <!-- for google map -->
