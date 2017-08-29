@@ -1150,6 +1150,7 @@ app.factory('homesFactory', function(){
   homesFactory.prevHomes = function(){
         if (counter > 0) {
             counter -= 10;
+            console.log(counter);
         }
   }
 
