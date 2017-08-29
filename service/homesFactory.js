@@ -1129,6 +1129,7 @@ app.factory('homesFactory', function(){
   var temp = [];
 
   homesFactory.getData = function() {
+      temp = [];
       for (var i = counter; i < counter + 10 && i < homes.length; i++) {
           temp.push(homes[i]);
       }
@@ -1138,6 +1139,11 @@ app.factory('homesFactory', function(){
   homesFactory.nextHomes = function(){
     if (counter < homes.length) {
         counter += 10;
+        console.log(counter);
+        //when you reach the end..
+        if (counter === 100) {
+          homesFactory.prevHomes();
+        }
     }
   }
 
