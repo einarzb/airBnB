@@ -8,11 +8,19 @@
 </head>
 <body>
 
-    <div class="row" ng-controller="authCtrl">
-      <div class="container">
-      <button type="button" ng-click="login()">login</button>
+  <div class="row" ng-controller="authCtrl">
+    <div class="container">
+      <button type="button" style="background-color:transparent;border:none;outline:none" ng-click="login()">login</button>
+      <button type="button" style="background-color:transparent;border:none;outline:none" ng-click="register()">register</button>
+      <div style="display:flex;" class="loginForm" ng-show="loginForm">
+        <input class="form-control" type="text" ng-model="username">&nbsp;
+        <!-- <input type="password" ng-model="password"> -->
+        <button type="button" class="btn btn-danger btn-sm" ng-click="checkAuth()">login</button>
       </div>
     </div>
+  </div>
+
+
 
     <div class="row">
         <div class="col-md-8 col-md-offset-3 main">
@@ -113,8 +121,6 @@
 <script type="text/javascript" src="js/controller/homeCtrl.js"></script>
 <script type="text/javascript" src="js/controller/userCtrl.js"></script>
 <script type="text/javascript" src="js/controller/authCtrl.js"></script>
-
-
 <script type="text/javascript" src="js/service/usersFactory.js"></script>
 <script type="text/javascript" src="js/service/homesFactory.js"></script>
 <script type="text/javascript" src="js/service/authFactory.js"></script>
